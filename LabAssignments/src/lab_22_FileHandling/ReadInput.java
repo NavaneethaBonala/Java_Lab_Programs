@@ -12,7 +12,7 @@ public class ReadInput // class declaration
 {
 	// Main Method throws Exception
 	public static void main(String[] args) throws Exception {
-
+		// read data from a file
 		FileInputStream fis = new FileInputStream("E:\\test.txt");
 		int character;
 		int totalCharacters = 0;
