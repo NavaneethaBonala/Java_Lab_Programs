@@ -23,6 +23,8 @@ public class ReplaceVowels { // classdeclaration
 		// replaceAll method to replace the Vowels with Star(*) 
 		str1 = str.replaceAll( "[aeiouAEIOU]", "*" );
 		System.out.println(str1);
+		
+		sc.close();
 	}
 }
 
