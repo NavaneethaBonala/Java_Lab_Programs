@@ -25,16 +25,17 @@ public class ManipulateStrings
 	{	// An Lambda Expression for ConvertString Interface
 		ConvertString test = (String s) -> {
 			//  Display the Converted UpperCase of the Given String
-			System.out.println(s.toUpperCase());
+			System.out.println("Given String : "+s);
+			System.out.println("UpperCase of the String : "+s.toUpperCase());
 		//  Display the Converted LowerCase of the Given String
-			System.out.println(s.toLowerCase());
+			System.out.println("LowerCase of the String : "+s.toLowerCase());
 		};
 		// An Lambda Expression for ReverseString Interface
 		ReverseString test1 = (String s) -> {
 			// Using String Builder to Reverse a String
 			String reversed = new StringBuilder(s).reverse().toString();
 			// Display the Reversed String
-			System.out.println(reversed);
+			System.out.println("Reverse of String : "+ reversed);
 		};
 		// Method Calling
 		test.convert("JAVA Programming Language");
