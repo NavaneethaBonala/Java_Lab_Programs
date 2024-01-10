@@ -1,0 +1,164 @@
+Lab_30_DDL_DEMO
+
+create a table 
+table name :  person
+table structure
+p_nid  int not null / unique
+p_name varchar(30)  not null
+p_address text
+
+
+***********************************************************************
+
+// creating a table with table_name as person and added columns 
+//are p_id, p_name, p_address 
+mysql> create table person ( p_id int Unique not null,
+    -> p_name varchar(30) not null,
+    -> p_address text);
+
+Query OK, 0 rows affected (0.60 sec)
+
+mysql> show tables;
++--------------------------+
+| Tables_in_person_details |
++--------------------------+
+| person                   |
++--------------------------+
+1 row in set (0.06 sec)
+
+mysql> desc person;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| p_id      | int         | NO   | PRI | NULL    |       |
+| p_name    | varchar(30) | NO   |     | NULL    |       |
+| p_address | text        | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+4 rows in set (0.06 sec)
+
+***********************************************************************
+
+1. insert 4 records to the table
+//Inserting 4 records as (p_id, p_name, p_address) in to the table person 
+mysql> insert into person values (1,'Elsa', 'Hyderabad');
+Query OK, 1 row affected (0.11 sec)
+
+
+mysql> insert into person values (2,'Anna', 'Hyderabad');
+Query OK, 1 row affected (0.07 sec)
+
+
+mysql> insert into person values (3,'Cinderella', 'Hyderabad');
+Query OK, 1 row affected (0.12 sec)
+
+
+mysql> insert into person values (4,'snow white', 'Hyderabad');
+Query OK, 1 row affected (0.10 sec)
+
+mysql> select * from person;
++------+------------+-----------+
+| p_id | p_name     | p_address |
++------+------------+-----------+
+|    1 | Elsa       | Hyderabad |
+|    2 | Anna       | Hyderabad |
+|    3 | Cinderella | Hyderabad |
+|    4 | snow white | Hyderabad |
++------+------------+-----------+
+4 rows in set (0.03 sec)
+
+***********************************************************************
+
+
+2. add a new column to the table  p_age int
+// Now adding a new column for age p_age
+mysql> alter table person add p_age int;
+Query OK, 0 rows affected (0.37 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from person;
++------+------------+-----------+-------+
+| p_id | p_name     | p_address | p_age |
++------+------------+-----------+-------+
+|    1 | Elsa       | Hyderabad |  NULL |
+|    2 | Anna       | Hyderabad |  NULL |
+|    3 | Cinderella | Hyderabad |  NULL |
+|    4 | snow white | Hyderabad |  NULL |
++------+------------+-----------+-------+
+4 rows in set (0.02 sec)
+
+***********************************************************************
+
+
+3. update the age column of existing records
+// Updating the age values for all the records
+mysql> update person set p_age = 25 where p_id = 1;
+Query OK, 1 row affected (0.08 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+
+mysql> update person set p_age = 23 where p_id = 2;
+Query OK, 1 row affected (0.09 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+
+mysql> update person set p_age = 22 where p_id = 3;
+Query OK, 1 row affected (0.09 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+
+mysql> update person set p_age = 24 where p_id = 4;
+Query OK, 1 row affected (0.24 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from person;
++------+------------+-----------+-------+
+| p_id | p_name     | p_address | p_age |
++------+------------+-----------+-------+
+|    1 | Elsa       | Hyderabad |    25 |
+|    2 | Anna       | Hyderabad |    23 |
+|    3 | Cinderella | Hyderabad |    22 |
+|    4 | snow white | Hyderabad |    24 |
++------+------------+-----------+-------+
+4 rows in set (0.03 sec)
+
+***********************************************************************
+
+4. extended the p_name column size to 50
+//Changing the size of p_name from 30 to 50
+mysql> alter table person modify p_name varchar(50) NOT NULL;
+Query OK, 0 rows affected (0.12 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> DESC PERSON;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| p_id      | int         | NO   | PRI | NULL    |       |
+| p_name    | varchar(50) | NO   |     | NULL    |       |
+| p_address | text        | YES  |     | NULL    |       |
+| p_age     | int         | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+4 rows in set (0.12 sec)
+
+***********************************************************************
+
+
+5. Add not null constraint for p_age, p_address columns
+// Changing constraint from  ‘null’ to ‘not null’ for p_age and p_address
+mysql> Alter table person  modify column p_age int not null, modify column p_address text not null;
+Query OK, 0 rows affected (1.64 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> DESC PERSON;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| p_id      | int         | NO   | PRI | NULL    |       |
+| p_name    | varchar(50) | NO   |     | NULL    |       |
+| p_address | text        | NO   |     | NULL    |       |
+| p_age     | int         | NO   |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+
+

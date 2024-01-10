@@ -1,0 +1,128 @@
+Lab_29_TableCreation
+
+Create an Employee table with empid, empname, job, deptno, salary, mgr_id, hiredate by adding not null for all the columns and unique for empid.
+
+CREATE TABLE Employee (EmpID INT UNIQUE NOT NULL, 
+EmpName VARCHAR(30) NOT NULL,
+Job VARCHAR(20) NOT NULL,
+DeptNo INT NOT NULL,
+Salary FLOAT NOT NULL,
+Mgr_ID INT NOT NULL,
+HireDate DATE NOT NULL);
+
+mysql> desc employee;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| EmpID    | int         | NO   | PRI | NULL    |       |
+| EmpName  | varchar(30) | NO   |     | NULL    |       |
+| Job      | varchar(20) | NO   |     | NULL    |       |
+| DeptNo   | int         | NO   |     | NULL    |       |
+| Salary   | float       | NO   |     | NULL    |       |
+| Mgr_ID   | int         | NO   |     | NULL    |       |
+| HireDate | date        | NO   |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+*********************************************************************
+insert 20 records to the table
+1. write the query to create and insert records
+2. query to view all the records from the table	 
+3. query to count no. of records from the table
+4. query to view only empid, empname, job and salary of all the employees.
+
+*********************************************************************
+
+1. Write the query to create and insert records
+
+mysql> INSERT INTO EMPLOYEE VALUES (1001,'John','Manager',10,25000,101,'2024-01-08'),
+    -> (1002,'Joe','Manager',10,25000,102,'2024-01-05'),
+    -> (1003,'Jane','AsstManager',09,20000,103,'2024-01-05'),
+    -> (1004,'Alice','AsstManager',09,20000,104,'2024-01-04'),
+    -> (1005,'Mishra','PersonalAsst',08,22000,105,'2023-11-21'),
+    -> (1006,'Anand','Clerk', 07,17000,106,'2024-01-08'),
+    -> (1007,'Kanth','Admin',05,15000,107,'2023-11-21'),
+    -> (1008,'James','AsstManager',09,20000,108,'2023-12-09'),
+    -> (1009,'Lokesh','Clerk', 07 ,17000,109,'2023-11-21'),
+    -> (1010,'Anna','Manager',10,25000,110,'2024-01-08'),
+    -> (1011,'Parker','AsstManager',09,20000,111,'2024-01-08'),
+    -> (1012,'Smith','Clerk', 07,17000,112,'2023-01-05'),
+    -> (1013,'Doe','Admin',05,15000,113,'2023-06-22'),
+    -> (1014,'Johnson','Manager',10,25000,114,'2023-11-22'),
+    -> (1015,'John','PersonalAsst',08,22000,115,'2023-07-08'),
+    -> (1016,'Chandu','Admin',05,15000,116,'2023-05-23'),
+    -> (1017,'Jeevan','PersonalAsst',08,22000,117,'2023-09-10'),
+    -> (1018,'Smith','PersonalAsst',08,22000,118,'2024-01-02'),
+    -> (1019,'Parker','AsstManager',09,20000,119,'2024-01-08'),
+    -> (1020,'Bobby','Admin',05,15000,120,'2023-09-10');
+ 
+ *********************************************************************
+    
+2. Query to view all the records from the table	
+
+mysql> select * from employee;
++-------+---------+--------------+--------+--------+--------+------------+
+| EmpID | EmpName | Job          | DeptNo | Salary | Mgr_ID | HireDate   |
++-------+---------+--------------+--------+--------+--------+------------+
+|  1001 | John    | Manager      |     10 |  25000 |    101 | 2024-01-08 |
+|  1002 | Joe     | Manager      |     10 |  25000 |    102 | 2024-01-05 |
+|  1003 | Jane    | AsstManager  |      9 |  20000 |    103 | 2024-01-05 |
+|  1004 | Alice   | AsstManager  |      9 |  20000 |    104 | 2024-01-04 |
+|  1005 | Mishra  | PersonalAsst |      8 |  22000 |    105 | 2023-11-21 |
+|  1006 | Anand   | Clerk        |      7 |  17000 |    106 | 2024-01-08 |
+|  1007 | Kanth   | Admin        |      5 |  15000 |    107 | 2023-11-21 |
+|  1008 | James   | AsstManager  |      9 |  20000 |    108 | 2023-12-09 |
+|  1009 | Lokesh  | Clerk        |      7 |  17000 |    109 | 2023-11-21 |
+|  1010 | Anna    | Manager      |     10 |  25000 |    110 | 2024-01-08 |
+|  1011 | Parker  | AsstManager  |      9 |  20000 |    111 | 2024-01-08 |
+|  1012 | Smith   | Clerk        |      7 |  17000 |    112 | 2023-01-05 |
+|  1013 | Doe     | Admin        |      5 |  15000 |    113 | 2023-06-22 |
+|  1014 | Johnson | Manager      |     10 |  25000 |    114 | 2023-11-22 |
+|  1015 | John    | PersonalAsst |      8 |  22000 |    115 | 2023-07-08 |
+|  1016 | Chandu  | Admin        |      5 |  15000 |    116 | 2023-05-23 |
+|  1017 | Jeevan  | PersonalAsst |      8 |  22000 |    117 | 2023-09-10 |
+|  1018 | Smith   | PersonalAsst |      8 |  22000 |    118 | 2024-01-02 |
+|  1019 | Parker  | AsstManager  |      9 |  20000 |    119 | 2024-01-08 |
+|  1020 | Bobby   | Admin        |      5 |  15000 |    120 | 2023-09-10 |
++-------+---------+--------------+--------+--------+--------+------------+
+20 rows in set (0.00 sec)
+
+*********************************************************************
+
+3. query to count no. of records from the table
+
+mysql> select count(*) from employee;
++----------+
+| count(*) |
++----------+
+|       20 |
++----------+
+
+*********************************************************************
+
+4. query to view only empid, empname, job and salary of all the employees.
+
+mysql> select empid,empname,job,salary from employee;
++-------+---------+--------------+--------+
+| empid | empname | job          | salary |
++-------+---------+--------------+--------+
+|  1001 | John    | Manager      |  25000 |
+|  1002 | Joe     | Manager      |  25000 |
+|  1003 | Jane    | AsstManager  |  20000 |
+|  1004 | Alice   | AsstManager  |  20000 |
+|  1005 | Mishra  | PersonalAsst |  22000 |
+|  1006 | Anand   | Clerk        |  17000 |
+|  1007 | Kanth   | Admin        |  15000 |
+|  1008 | James   | AsstManager  |  20000 |
+|  1009 | Lokesh  | Clerk        |  17000 |
+|  1010 | Anna    | Manager      |  25000 |
+|  1011 | Parker  | AsstManager  |  20000 |
+|  1012 | Smith   | Clerk        |  17000 |
+|  1013 | Doe     | Admin        |  15000 |
+|  1014 | Johnson | Manager      |  25000 |
+|  1015 | John    | PersonalAsst |  22000 |
+|  1016 | Chandu  | Admin        |  15000 |
+|  1017 | Jeevan  | PersonalAsst |  22000 |
+|  1018 | Smith   | PersonalAsst |  22000 |
+|  1019 | Parker  | AsstManager  |  20000 |
+|  1020 | Bobby   | Admin        |  15000 |
++-------+---------+--------------+--------+
+
