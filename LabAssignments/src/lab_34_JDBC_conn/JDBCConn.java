@@ -22,7 +22,8 @@ public class JDBCConn {
 			// While loop checks for the next element
 			while(rs.next())
 			{	//to display Details of all the columns
-				System.out.println(rs.getInt(1)+"\t"+rs.getString(2)+"\t"+rs.getString(3)+"\t"+rs.getInt(4)+"\t"+rs.getString(5)+"\t"+rs.getInt(6)+"\t"+rs.getInt(7)+"\t"+rs.getInt(8));
+				System.out.println(rs.getMetaData());
+				//System.out.println(rs.getInt(1)+"\t"+rs.getString(2)+"\t"+rs.getString(3)+"\t"+rs.getInt(4)+"\t"+rs.getString(5)+"\t"+rs.getInt(6)+"\t"+rs.getInt(7)+"\t"+rs.getInt(8));
 			}
 			// Catch Block 			
 		}catch(Exception e)
